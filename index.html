@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+    
+  <!-- Files added -->
+  <script type="text/javascript" src="js/myjscript.js"></script>
+  <link href="css/mycss.css" rel="stylesheet" />
+
+  <title>Statistical Analysis</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bootstrap/vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="bootstrap/device-mockups/device-mockups.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="bootstrap/css/new-age.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger">Statistical Analysis</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#input">Calculations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#output">Results</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 my-auto">
+            <div class="device-container">
+                <div class="device-mockup iphone6_plus portrait white">
+                    <div class="device" id="input">
+                        <div class="screen">
+                            <form name="calculator">
+                                <h6 id="instruction" >Enter 3 numbers separated by commas</h6>
+                                <input type="text" id="display" class="display" placeholder=" e.g. 1,2,3">
+                                <img src="images/numbers.jpeg" class="numbers" alt="calculator" style="width: 100%" usemap="#map"/>
+                                <map name="map">
+                                    <area shape="circle" coords="184,583,83" value="1" onclick="show('1')"/>
+                                    <area shape="circle" coords="415,583,86" value="2" onclick="show('2')" />
+                                    <area shape="circle" coords="645,583,84" value="3" onclick="show('3')"/>
+                                    <area shape="circle" coords="184,784,84" value="4" onclick="show('4')"/>
+                                    <area shape="circle" coords="414,784,86" value="5" onclick="show('5')"/>
+                                    <area shape="circle" coords="645,783,84" value="6" onclick="show('6')"/>
+                                    <area shape="circle" coords="183,983,87" value="7" onclick="show('7')"/>
+                                    <area shape="circle" coords="412,981,79" value="8" onclick="show('8')"/>
+                                    <area shape="circle" coords="643,983,83" value="9" onclick="show('9')"/>
+                                    <area shape="circle" coords="186,1184,84" value="." onclick="show('.')"/>
+                                    <area shape="circle" coords="644,1183,87" value="," onclick="show(',')"/>
+                                    <area shape="circle" coords="412,1184,85" value="0" onclick="show('0')"/>
+                                    <area shape="circle" coords="667,349,67" value="c" onclick="clrScreen()"/>
+                                </map>
+                            </form>
+                        </div>
+                        <div class="button" onclick="statsCalc()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 my-auto">
+            <div class="header-content mx-auto">
+                <div class="device-container">
+                    <div class="device-mockup iphone6_plus  white">
+                        <div class="device" id="output">
+                            <div class="screen" style="background-color: black">
+                                <table style="margin-top: 8%; margin-left: 3%; width: 95%">
+                                    <tr><td class="sizeTex"><h5>Min:</h5></td><td class="sizeTable"><input disabled type="text" id="min" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Max:</h5></td><td class="sizeTable"><input disabled type="text" id="max" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Range:</h5></td><td class="sizeTable"><input disabled type="text" id="range" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Mean:</h5> </td><td class="sizeTable"><input disabled type="text" id="mean" class="results"></td></tr>    
+                                    <tr><td class="sizeTex"><h5>Median:</h5></td><td class="sizeTable"><input disabled type="text" id="median" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Mode:</h5></td><td class="sizeTable"><input disabled type="text" id="mode" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Squared Difference:</h5></td><td class="sizeTable"><input disabled type="text" id="squaredDiff" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Variance:</h5></td><td class="sizeTable"><input disabled type="text" id="variance" class="results"></td></tr>
+                                    <tr><td class="sizeTex"><h5>Standard Deviation:</h5> </td><td class="sizeTable"><input disabled type="text" id="std" class="results"></td></tr>
+                                </table>
+                            </div>
+                            <div class="button" onclick="clrScreen()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+      
+  <footer>
+    <div class="container">
+      <p>&copy; Luiza Lopes 2020. All Rights Reserved.</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#">Privacy</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Terms</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="bootstrap/js/new-age.min.js"></script>
+    
+  <script src="js/imageMapResizer.min.js"></script>
+</body>
+
+</html>
